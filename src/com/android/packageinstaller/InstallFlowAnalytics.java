@@ -16,8 +16,6 @@
 */
 package com.android.packageinstaller;
 
-import com.android.internal.util.HexDump;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -471,7 +469,7 @@ public class InstallFlowAnalytics implements Parcelable {
                         Log.w(TAG, "Failed to hash APK contents", e);
                     } finally {
                         String digestHex = (digest != null)
-                                ? HexDump.toHexString(digest, false)
+                                ? IntegralToString.bytesToHexString(digest, false)
                                 : "";
                         EventLogTags.writeInstallPackageAttempt(
                                 resultAndFlags,
