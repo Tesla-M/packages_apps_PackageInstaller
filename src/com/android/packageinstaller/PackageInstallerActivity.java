@@ -449,13 +449,7 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
         mInstallFlowAnalytics.setSystemApp(
                 (mAppInfo != null) && ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0));
 
-        // If we have a session id, we're invoked to verify the permissions for the given
-        // package. Otherwise, we start the install process.
-        if (mSessionId != -1) {
-            startInstallConfirm();
-        } else {
-            startInstall();
-        }
+        startInstallConfirm();
     }
 
     void setPmResult(int pmResult) {
@@ -705,7 +699,7 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
             } else {
                 mScrollView.pageScroll(View.FOCUS_DOWN);
             }
-        } else if (v == mCancel) {
+        } else if(v == mCancel) {
             // Cancel and finish
             setResult(RESULT_CANCELED);
             if (mSessionId != -1) {
